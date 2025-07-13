@@ -11,9 +11,11 @@ function Signup() {
     const [email , setEmail ] = useState ();
     const [password , setPassword ] = useState ();
 
+    const LoginPage = import.meta.env.BASE_URL;
+
     const handleSubmit = (e) =>{
         e.preventDefault();
-         axios.post('http://localhost:8000/register' , {name , email , password})
+         axios.post(`${LoginPage}/register` , {name , email , password})
          .then(res => {console.log(res.data); navigate('/Login') })
          .catch(err => console.log(err)) 
     }

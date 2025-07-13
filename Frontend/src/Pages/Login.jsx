@@ -9,10 +9,11 @@ function Login() {
   const [password , setPassword] = useState();
 
   const navigate = useNavigate();
+  const LoginPage = import.meta.env.BASE_URL;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:8000/Login' , {email , password})
+    axios.post(`${LoginPage}/Login` , {email , password})
     .then(res => { 
       console.log(res);
       if(res.data === "Success") {
