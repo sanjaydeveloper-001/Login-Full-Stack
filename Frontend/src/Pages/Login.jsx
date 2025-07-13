@@ -9,11 +9,10 @@ function Login() {
   const [password , setPassword] = useState();
 
   const navigate = useNavigate();
-  const LoginPage = import.meta.env.BASE_URL;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post(`${LoginPage}/Login` , {email , password})
+    axios.post('https://login-full-stack-d2bl.onrender.com/Login' , {email , password})
     .then(res => { 
       console.log(res);
       if(res.data === "Success") {

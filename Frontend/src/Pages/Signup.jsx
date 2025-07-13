@@ -11,12 +11,10 @@ function Signup() {
     const [email , setEmail ] = useState ();
     const [password , setPassword ] = useState ();
 
-    const LoginPage = import.meta.env.BASE_URL;
-
     const handleSubmit = (e) =>{
         e.preventDefault();
-         axios.post(`${LoginPage}/register` , {name , email , password})
-         .then(res => {console.log(res.data); navigate('/Login') })
+         axios.post('https://login-full-stack-d2bl.onrender.com/register' , {name , email , password})
+         .then(res => {console.log(res); console.log("DATA :"); navigate('/Login') })
          .catch(err => console.log(err)) 
     }
 
