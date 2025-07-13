@@ -6,5 +6,6 @@ const RegisterSchema = new mongoose.Schema({
     password:String
 })
 
-const ResiterModel = mongoose.model("registers" , RegisterSchema)
-module.exports = ResiterModel
+const RegisterModel = mongoose.model("registers", RegisterSchema)
+module.exports = RegisterModel
+
