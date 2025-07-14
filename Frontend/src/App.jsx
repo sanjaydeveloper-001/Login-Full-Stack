@@ -42,7 +42,7 @@ function App() {
         />
       <BrowserRouter>
         <Routes>
-            <Route path='/' element={<Home/>} />
+            <Route path='/' element={<Home user={user} />} />
             <Route path="/Login" element={<Login setProfile={setProfile} setUser={setUser} />} />
             <Route path="/Signup" element={<Signup setCreateProfile={setCreateProfile} />} />
         </Routes>

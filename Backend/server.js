@@ -18,27 +18,21 @@ app.post("/Login" , (req, res) => {
     .then(user => {
         if(user){
             if(user.password === password){
-                res.json("Success")
+                res.json({
+                    message : "Success",
+                    name:user.name
+                });
             }
             else{
-                res.json("Password is wrong!");
+                res.json({
+                    message : "Password is wrong!"
+                });
             }
         }
         else{
-            res.json("User not Registered !")
-        }
-    })
-})
-
-app.post("/findName" , (req , res) => {
-    const email = req.body;
-    RegisterModel.findOne({email : email})
-    .then(user => {
-        if(user){
-            res.json(user.name);
-        }
-        else{
-            res.json("User Not Found!");
+            res.json({
+                message : "User not Registered !"
+            })
         }
     })
 })

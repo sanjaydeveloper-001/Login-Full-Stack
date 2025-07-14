@@ -20,11 +20,12 @@ function Login({ setProfile , setUser }) {
       })
       .then((res) => {
         console.log(res);
-        setError(res.data);
-        if (res.data === "Success") {
-          navigate("/");
-          setProfile(true);
-          setUser(email);
+        setError(res.data.message);
+        if (res.data.message) {
+            console.log(res.data.name)
+          // navigate("/");
+          // setProfile(true);
+          // setUser(email);
         }
       })
       .catch((err) => {
