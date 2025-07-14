@@ -25,17 +25,17 @@ app.post("/Login" , (req, res) => {
             }
         }
         else{
-            res.json("User not Registered")
+            res.json("User not Registered !")
         }
     })
 })
 
 app.post("/register", (req, res) => {
   RegisterModel.create(req.body)
-    .then((register) => res.json(register))
+    .then((register) =>{res.json(register) ;console.log("Coming!") })
     .catch((err) => res.json(err));
 });
 
-app.listen(process.env.PORT, () => {
+app.listen(8000, () => {
   console.log("Server is running !");
 });

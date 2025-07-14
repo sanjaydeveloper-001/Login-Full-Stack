@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios';
 
-function Signup() {
+function Signup({ setCreateProfile }) {
 
     const navigate = useNavigate();
 
@@ -10,19 +10,29 @@ function Signup() {
     const [name , setName ] = useState ("");
     const [email , setEmail ] = useState ("");
     const [password , setPassword ] = useState ("");
+    const [error , setError] = useState(null)
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-         axios.post('https://login-full-stack-d2bl.onrender.com/register' , {name , email , password})
-         .then(res => {console.log(res); console.log("DATA :"); navigate('/Login') })
-         .catch(err => console.log(err)) 
+        if(password.length < 8){
+          setError('Password should contain atlease 8 char !');
+        }
+        else{
+         axios.post(`https://login-full-stack-d2bl.onrender.com/register` , {name , email , password})
+         .then(res => {console.log(res.data); setCreateProfile(true) ; navigate('/Login')})
+         .catch(err => {console.log(err) }) 
+        }
     }
 
 
   return (
     <form onSubmit={handleSubmit} className='w-[400px] h-[500px] bg-blue-400 rounded-2xl p-5 flex flex-col gap-2'>
 
-        <h1 className='text-3xl text-white mb-5'>SignUp!</h1>
+        <div className='mb-3'>
+          <h1 className='text-3xl text-white '>SignUp!</h1>
+          {error ? <p className='text-red-600'>{error}</p> : ''}
+
+        </div>
         <label htmlFor="">Name:</label>
         <input onChange={(e)=> setName(e.target.value)} type="text" name="name" id="name" className='w-full h-10 border-2 outline-none pl-3' />
 
