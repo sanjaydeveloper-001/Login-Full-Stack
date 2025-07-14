@@ -31,21 +31,11 @@ app.post("/Login" , (req, res) => {
 })
 
 app.post("/register", (req, res) => {
-  const {email , password} = res.body;
-  RegisterModel.findOne({email : email}).then( user =>
-    {
-         if(user){
-            res.json("User Already Registered !");
-         }
-         else{
-            RegisterModel.create(req.body)
-                .then((register) =>{res.json(register) ;console.log("Coming!") })
-                .catch((err) => res.json(err));
-            }
-    });
-         
+
+  RegisterModel.create(req.body)
+    .then((register) =>{res.json(register) ;console.log("Coming!") })
+    .catch((err) => res.json(err));
 });
-  
 
 app.listen(8000, () => {
   console.log("Server is running !");
