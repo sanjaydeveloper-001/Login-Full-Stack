@@ -30,6 +30,19 @@ app.post("/Login" , (req, res) => {
     })
 })
 
+app.post("/findName" , (req , res) => {
+    const email = req.body;
+    RegisterModel.findOne({email : email})
+    .then(user => {
+        if(user){
+            res.json(user.name);
+        }
+        else{
+            res.json("User Not Found!");
+        }
+    })
+})
+
 app.post("/register", (req, res) => {
 
   RegisterModel.create(req.body)

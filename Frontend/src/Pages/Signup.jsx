@@ -39,17 +39,17 @@ function Signup({ setCreateProfile }) {
 
         <div className='mb-3'>
           <h1 className='text-3xl text-white '>SignUp!</h1>
-          {error ? <p className='text-green-400'>{error}</p> : ''}
+          {error ? <p className='text-red-600'>{error}</p> : ''}
 
         </div>
         <label className="text-gray-50/30" htmlFor="">Name:</label>
-        <input onChange={(e)=> setName(e.target.value)} type="text" name="name" id="name" className='w-full h-10 border-2 border-gray-50/50 outline-none pl-3 text-green-400' required />
+        <input onChange={(e)=> {setName(e.target.value) ;setError(false)}} type="text" name="name" id="name" className='w-full h-10 border-2 border-gray-50/50 outline-none pl-3 text-green-400' required />
 
         <label className="text-gray-50/30" htmlFor="email">Email :</label>
-        <input onChange={(e)=> { const lowerText = e.target.value.toLowerCase(); setEmail(lowerText)}} value={email} type="email" name='email' id='email' required className='w-full h-10 border-2 border-gray-50/50 outline-none pl-3 text-green-400'/>
+        <input onChange={(e)=> { const lowerText = e.target.value.toLowerCase(); setEmail(lowerText) ; setError(false)}} value={email} type="email" name='email' id='email' required className='w-full h-10 border-2 border-gray-50/50 outline-none pl-3 text-green-400'/>
         
         <label className="text-gray-50/30" htmlFor="password">Create Password :</label>
-        <input onChange={(e)=> setPassword(e.target.value)} type="password" name='password' id='password' required className='w-full h-10 border-2 border-gray-50/50 outline-none pl-3 text-green-400'/>
+        <input onChange={(e)=> {setPassword(e.target.value) ; setError(false)}} type="password" name='password' id='password' required className='w-full h-10 border-2 border-gray-50/50 outline-none pl-3 text-green-400'/>
         <Link to="/Login" className='w-max' > Already a user!</Link>
 
         <button className='w-full h-10 text-white bg-green-600 rounded-3xl hover:bg-green-800'>Register</button>

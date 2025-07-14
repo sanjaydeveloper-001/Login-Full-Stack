@@ -10,6 +10,7 @@ function App() {
 
   const [profile , setProfile] = useState(false);
   const [createProfile , setCreateProfile] = useState(false);
+  const [user , setUser] = useState("");
 
   useEffect(()=>{
     if(profile){
@@ -42,7 +43,7 @@ function App() {
       <BrowserRouter>
         <Routes>
             <Route path='/' element={<Home/>} />
-            <Route path="/Login" element={<Login setProfile={setProfile} />} />
+            <Route path="/Login" element={<Login setProfile={setProfile} setUser={setUser} />} />
             <Route path="/Signup" element={<Signup setCreateProfile={setCreateProfile} />} />
         </Routes>
       </BrowserRouter>

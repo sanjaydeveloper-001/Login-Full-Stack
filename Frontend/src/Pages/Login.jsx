@@ -3,7 +3,7 @@ import React, { useActionState } from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-function Login({ setProfile }) {
+function Login({ setProfile , setUser }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -24,6 +24,7 @@ function Login({ setProfile }) {
         if (res.data === "Success") {
           navigate("/");
           setProfile(true);
+          setUser(email);
         }
       })
       .catch((err) => {
