@@ -10,7 +10,15 @@ function App() {
 
   const [profile , setProfile] = useState(false);
   const [createProfile , setCreateProfile] = useState(false);
-  const [user , setUser] = useState("");
+  const [user , setUser] = useState(()=>{
+    let data = localStorage.getItem("User");
+    if(data){
+      return data;
+    }
+    else{
+      return "";
+    }
+  });
 
   useEffect(()=>{
     if(profile){
@@ -27,6 +35,7 @@ function App() {
   return (
     
     <div className='flex justify-center items-center w-full h-[100vh] bg-black '>
+      
       <ToastContainer
         position="top-center"
         autoClose={3000}
@@ -42,7 +51,7 @@ function App() {
         />
       <BrowserRouter>
         <Routes>
-            <Route path='/' element={<Home user={user} />} />
+            <Route path='/' element={<Home user={user} setUser={setUser} />} />
             <Route path="/Login" element={<Login setProfile={setProfile} setUser={setUser} />} />
             <Route path="/Signup" element={<Signup setCreateProfile={setCreateProfile} />} />
         </Routes>

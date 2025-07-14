@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios';
+import { IoExitOutline } from "react-icons/io5";
 
 function Signup({ setCreateProfile }) {
 
@@ -35,7 +36,9 @@ function Signup({ setCreateProfile }) {
 
 
   return (
-    <form onSubmit={handleSubmit} className='w-[400px] h-max bg-white/8 rounded-4xl p-5 flex flex-col gap-2 transition-all duration-300 hover:shadow-[0_0_40px_green]'>
+    <>
+    <Link to="/" className=' fixed right-5 top-5 '>{<IoExitOutline className='text-3xl text-red-500 hover:text-white'/>}</Link>
+    <form onSubmit={handleSubmit} className='w-[350px] md:h-max md:w-[400px] h-max bg-white/8 rounded-4xl p-5 flex flex-col gap-2 transition-all duration-300 hover:shadow-[0_0_40px_green]'>
 
         <div className='mb-3'>
           <h1 className='text-3xl text-white '>SignUp!</h1>
@@ -54,6 +57,7 @@ function Signup({ setCreateProfile }) {
 
         <button className='w-full h-10 text-white bg-green-600 rounded-3xl hover:bg-green-800'>Register</button>
     </form>
+    </>
   )
 }
 

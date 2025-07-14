@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useActionState } from "react";
+import { IoExitOutline } from "react-icons/io5";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -21,11 +21,11 @@ function Login({ setProfile , setUser }) {
       .then((res) => {
         console.log(res);
         setError(res.data.message);
-        if (res.data.message) {
-            console.log(res.data.name)
-          // navigate("/");
-          // setProfile(true);
-          // setUser(email);
+        if (res.data.message === "Success") {
+          navigate("/");
+          setProfile(true);
+          setUser(res.data.name);
+          localStorage.setItem("User" , res.data.name);
         }
       })
       .catch((err) => {
@@ -34,9 +34,11 @@ function Login({ setProfile , setUser }) {
   };
 
   return (
+    <>
+    <Link to="/" className=' fixed right-5 top-5 '>{<IoExitOutline className='text-3xl text-red-500 hover:text-white'/>}</Link>
     <form
       onSubmit={handleSubmit}
-      className="w-[400px] h-max bg-white/8 rounded-4xl p-5 flex flex-col gap-2 transition-all duration-300 hover:shadow-[0_0_40px_green]"
+      className="w-[350px] md:h-max md:w-[400px] bg-white/8 rounded-4xl p-5 flex flex-col gap-2 transition-all duration-300 hover:shadow-[0_0_40px_green]"
     >
       <div className="h-max mb-3">
         <h1 className="text-xl text-white">Login Here !</h1>
@@ -67,7 +69,6 @@ function Login({ setProfile , setUser }) {
       />
 
       <Link to="/Signup" className="w-max">
-        {" "}
         Create New!
       </Link>
 
@@ -75,6 +76,7 @@ function Login({ setProfile , setUser }) {
         Login
       </button>
     </form>
+    </>
   );
 }
 
