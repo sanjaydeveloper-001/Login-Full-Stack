@@ -47,22 +47,22 @@ function Signup({ setCreateProfile }) {
 
         </div>
         <label className="text-gray-50/30" htmlFor="">Name:</label>
-        <input onChange={(e)=> {setName(e.target.value) ;setError(false)}} type="text" name="name" id="name" className='w-full h-10 border-2 border-gray-50/50 outline-none pl-3 text-green-400' required />
+        <input placeholder='Enter Name' onChange={(e)=> {setName(e.target.value) ;setError(false)}} type="text" name="name" id="name" className='w-full h-10 border-2 border-gray-50/50 outline-none pl-3 text-green-400' required />
 
         <label className="text-gray-50/30" htmlFor="email">Email :</label>
-        <input onChange={(e)=> { const lowerText = e.target.value.toLowerCase(); setEmail(lowerText) ; setError(false)}} value={email} type="email" name='email' id='email' required className='w-full h-10 border-2 border-gray-50/50 outline-none pl-3 text-green-400'/>
+        <input placeholder='Enter Email' onChange={(e)=> { const lowerText = e.target.value.toLowerCase(); setEmail(lowerText) ; setError(false)}} value={email} type="email" name='email' id='email' required className='w-full h-10 border-2 border-gray-50/50 outline-none pl-3 text-green-400'/>
         
-        <label className="text-gray-50/30" htmlFor="password">Create Password :</label>
+        <label className="text-gray-50/30" htmlFor="password">Password :</label>
         <div className='relative flex w-full h-max items-center'>
-        <input onChange={(e)=> {setPassword(e.target.value) ; setError(false)}} type={passType} name='password' id='password' required className='w-full h-10 border-2 border-gray-50/50 outline-none pl-3 text-green-400'/>
+        <input placeholder='Create Password' onChange={(e)=> {setPassword(e.target.value) ; setError(false)}} type={passType} name='password' id='password' required className='w-full h-10 border-2 border-gray-50/50 outline-none pl-3 text-green-400'/>
         { passType === 'password' ?
           <IoEyeOffOutline className="text-white text-xl absolute right-4 cursor-pointer" onClick={()=> setPassType('text')} />
           : <IoEyeOutline className="text-white text-xl absolute right-4 cursor-pointer" onClick={()=> setPassType('password')} />
         }
         </div>
-        <Link to="/Login" className='w-max' > Already a user!</Link>
+        <Link to="/Login" className='w-max mt-1 mb-3' style={{textDecoration:'none', color:'white'}} ><p className='hover:text-green-300 hover:underline'> Already a user!</p></Link>
 
-        <button className='w-full h-10 text-white bg-green-600 rounded-3xl hover:bg-green-800'>Register</button>
+        <button className='w-full h-10 text-white bg-green-600 hover:bg-green-800 transition-all duration-150' style={{ borderRadius:'5px' }}>Register</button>
     </form>
     </>
   )

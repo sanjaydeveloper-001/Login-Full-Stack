@@ -74,11 +74,9 @@ function Login({ setProfile , setUser }) {
       </div>
       
 
-      <Link to="/Signup" className="w-max">
-        Create New!
-      </Link>
+      <Link to="/Signup" className='w-max mt-1 mb-3' style={{textDecoration:'none', color:'white'}} ><p className='hover:text-green-300 hover:underline'> Don't have account!</p></Link>
 
-      <button className="w-full h-10 text-white bg-green-600 rounded-3xl hover:bg-green-800">
+      <button className="w-full h-10 text-white bg-green-600 rounded-3xl hover:bg-green-800 transition-all duration-150" style={{ borderRadius:'5px' }}>
         Login
       </button>
     </form>
