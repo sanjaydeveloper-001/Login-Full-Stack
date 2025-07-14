@@ -34,31 +34,34 @@ function Login({ setProfile }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-[400px] h-[500px] bg-blue-400 rounded-2xl p-5 flex flex-col gap-2"
+      className="w-[400px] h-max bg-white/8 rounded-4xl p-5 flex flex-col gap-2 transition-all duration-300 hover:shadow-[0_0_40px_green]"
     >
       <div className="h-max mb-3">
         <h1 className="text-xl text-white">Login Here !</h1>
         {error ? <p className="text-red-600">{error}</p> : ""}
       </div>
 
-      <label htmlFor="mail">Email :</label>
+      <label className="text-gray-50/30" htmlFor="mail">Email :</label>
       <input
+      
         type="email"
         onChange={(e) => {
           const lowerText = e.target.value.toLowerCase();
           setEmail(lowerText);
+          setError(false);
         }}
         value={email}
         required
-        className="w-full h-10 border-2 outline-none pl-3"
+        className="w-full h-10 border-2 border-gray-50/50 outline-none pl-3 text-green-400"
       />
 
-      <label htmlFor="password">Password :</label>
+      <label className="text-gray-50/30" htmlFor="password">Password :</label>
       <input
+      
         type="password"
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={(e) =>{ setPassword(e.target.value); setError(false);}}
         required
-        className="w-full h-10 border-2 outline-none pl-3"
+        className="w-full h-10 border-2 border-gray-50/50 outline-none pl-3 text-green-400"
       />
 
       <Link to="/Signup" className="w-max">
@@ -66,7 +69,7 @@ function Login({ setProfile }) {
         Create New!
       </Link>
 
-      <button className="w-full h-10 bg-amber-200 rounded-3xl hover:bg-amber-300">
+      <button className="w-full h-10 text-white bg-green-600 rounded-3xl hover:bg-green-800">
         Login
       </button>
     </form>

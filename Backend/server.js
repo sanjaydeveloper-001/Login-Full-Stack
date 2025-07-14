@@ -33,7 +33,7 @@ app.post("/Login" , (req, res) => {
 app.post("/register", (req, res) => {
 
   RegisterModel.create(req.body)
-    .then((register) =>{res.json(register) ;console.log("Coming!") })
+    .then((register) =>{res.json(register) ; console.log("Coming!") })
     .catch((err) => res.json(err));
 });
 
