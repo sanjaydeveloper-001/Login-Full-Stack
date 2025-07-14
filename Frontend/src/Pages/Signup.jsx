@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios';
-import { IoExitOutline } from "react-icons/io5";
+import { IoExitOutline , IoEyeOffOutline , IoEyeOutline } from "react-icons/io5";
 
 function Signup({ setCreateProfile }) {
 
@@ -12,6 +12,7 @@ function Signup({ setCreateProfile }) {
     const [email , setEmail ] = useState ("");
     const [password , setPassword ] = useState ("");
     const [error , setError] = useState(null)
+    const [passType , setPassType] = useState('password');
 
     const handleSubmit = (e) =>{
         setError(null);
@@ -52,7 +53,13 @@ function Signup({ setCreateProfile }) {
         <input onChange={(e)=> { const lowerText = e.target.value.toLowerCase(); setEmail(lowerText) ; setError(false)}} value={email} type="email" name='email' id='email' required className='w-full h-10 border-2 border-gray-50/50 outline-none pl-3 text-green-400'/>
         
         <label className="text-gray-50/30" htmlFor="password">Create Password :</label>
-        <input onChange={(e)=> {setPassword(e.target.value) ; setError(false)}} type="password" name='password' id='password' required className='w-full h-10 border-2 border-gray-50/50 outline-none pl-3 text-green-400'/>
+        <div className='relative flex w-full h-max items-center'>
+        <input onChange={(e)=> {setPassword(e.target.value) ; setError(false)}} type={passType} name='password' id='password' required className='w-full h-10 border-2 border-gray-50/50 outline-none pl-3 text-green-400'/>
+        { passType === 'password' ?
+          <IoEyeOffOutline className="text-white text-xl absolute right-4 cursor-pointer" onClick={()=> setPassType('text')} />
+          : <IoEyeOutline className="text-white text-xl absolute right-4 cursor-pointer" onClick={()=> setPassType('password')} />
+        }
+        </div>
         <Link to="/Login" className='w-max' > Already a user!</Link>
 
         <button className='w-full h-10 text-white bg-green-600 rounded-3xl hover:bg-green-800'>Register</button>

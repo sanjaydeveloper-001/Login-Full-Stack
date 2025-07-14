@@ -1,13 +1,13 @@
 import axios from "axios";
-import { IoExitOutline } from "react-icons/io5";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { IoExitOutline , IoEyeOffOutline , IoEyeOutline } from "react-icons/io5";
 
 function Login({ setProfile , setUser }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const [error, setError] = useState(null);
+  const [passType , setPassType] = useState('password');
 
   const navigate = useNavigate();
 
@@ -60,13 +60,19 @@ function Login({ setProfile , setUser }) {
       />
 
       <label className="text-gray-50/30" htmlFor="password">Password :</label>
-      <input
+      <div className="h-max w-full flex items-center relative">
+        <input           
+          type={passType}
+          onChange={(e) =>{ setPassword(e.target.value); setError(false);}}
+          required
+          className="w-full h-10 border-2 border-gray-50/50 outline-none pl-3 text-green-400"
+        />
+        { passType === 'password' ?
+          <IoEyeOffOutline className="text-white text-xl absolute right-4 cursor-pointer" onClick={()=> setPassType('text')} />
+          : <IoEyeOutline className="text-white text-xl absolute right-4 cursor-pointer" onClick={()=> setPassType('password')} />
+        }
+      </div>
       
-        type="password"
-        onChange={(e) =>{ setPassword(e.target.value); setError(false);}}
-        required
-        className="w-full h-10 border-2 border-gray-50/50 outline-none pl-3 text-green-400"
-      />
 
       <Link to="/Signup" className="w-max">
         Create New!
